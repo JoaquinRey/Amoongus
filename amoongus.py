@@ -22,6 +22,7 @@ from discord.ext.commands import has_permissions, MissingPermissions
 PREFIX = '!'
 
 OWNER = 280411662333247499
+OWNER2 = 433355267179020289
 
 bot = commands.Bot(command_prefix=PREFIX, description="Amoongus")
 bot.remove_command('help')
@@ -120,7 +121,7 @@ async def docs(ctx):
 
 @bot.command()
 async def help(ctx):
-    await ctx.send("```Normal Commands: \n!ping - pong \n!join - Gets the bot to join the voice channel of the user who called the command. \n!leave - Gets the bot to disconnect from whichever voice channel the bot resides in. \n!invite - The bot will send out an invite to the current server.\n!inviteme - The bot will send out the bot's invite link. \n!docs - The bot sends a .txt file of the documentation \n!help - gives this. \n!d20 {int number} - The bot will roll a d20 die (number) amount of times \n \nAdmin Commands: \n!create_role {string name} - You will be asked for a color, followed by if you want the role to be hoisted, and the 53 permissions of the role. \n!mute {@user} - The bot will mute the user if there is a 'Muted' role in the server. \n!unmute {@user} - The bot will unmute the user if there is a 'Muted' role in the server.```")
+    await ctx.send("```Normal Commands: \n!join - Gets the bot to join the voice channel of the user who called the command. \n!leave - Gets the bot to disconnect from whichever voice channel the bot resides in. \n!invite - The bot will send out an invite to the current server.\n!inviteme - The bot will send out the bot's invite link. \n!docs - The bot sends a .txt file of the documentation \n!help - gives this. \n!roll d{int dice} {int number} - The bot will roll a d (dice) die (number) amount of times \n \nAdmin Commands: \n!create_role {string name} - You will be asked for a color, followed by if you want the role to be hoisted, and the 53 permissions of the role.(as 53 0's or 1's) \n!mute {@user} - The bot will mute the user if there is a 'Muted' role in the server. \n!unmute {@user} - The bot will unmute the user if there is a 'Muted' role in the server.  \n!smute {@user} - The bot will server voice mute (user).  \n!sunmute {@user} - The bot will server voice unmute (user).  \n \nRandom commands that exist:  \n!dm (user) (message) - The bot will dm (user), if they share a server, with (mesage).  \n!tit - Shows a picture of a tit(the bird)  \n!amongus - Pings among us role  \n!ping - pong  \n!wheregg - 鸡蛋在哪儿```")
 
 @bot.command(aliases=['play', 'queue', 'que'])
 async def tts(ctx, phrase: str):
@@ -162,7 +163,7 @@ async def roll(ctx, d: str, num: int):
     await ctx.send(f'```{numbers} ```')
 
 @bot.command()
-async def whereegg(ctx):
+async def wheregg(ctx):
     channel = ctx.message.channel
     await channel.send(file=discord.File(r'images\whereegg.jpg'))
 
@@ -244,7 +245,7 @@ async def amongping(ctx):
     @bot.listen()
     async def on_message(message):
         if message.content == 'yes':
-            await ctx.send('@everyone')
+            await ctx.send('@amongping')
             return
 
 @bot.command()
@@ -342,7 +343,7 @@ currentChannel= ''
 
 @bot.command()
 async def broadcast(ctx, channelID: int, *, content):
-    if ctx.message.author.id == OWNER:
+    if ctx.message.author.id == OWNER or ctx.message.author.id == OWNER2:
         channel = bot.get_channel(channelID)
         await channel.send(content)
     else:
