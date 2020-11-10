@@ -1,0 +1,24 @@
+Normal Commands:
+-ping
+    pong
+-join
+    Gets the bot to join the voice channel of the user who called the command.
+-leave
+    Gets the bot to disconnect from whichever voice channel the bot resides in.
+-invite
+    The bot will send out an invite to the current server.
+-inviteme
+    The bot will send out the bot's invite link.
+-docs
+    The bot sends a .txt file of the documentation
+-d20 {int number}
+    The bot will roll a d20 die (number) amount of times
+
+Admin Commands:
+-create_role {string name}
+    You will be asked for a color, followed by if you want the role to be hoisted, and the 53 permissions of the role.
+-mute {@user}
+    The bot will mute the user if there is a 'Muted' role in the server.
+-unmute {@user}
+    The bot will unmute the user if there is a 'Muted' role in the server.
+
